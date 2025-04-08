@@ -11,8 +11,12 @@ window.addEventListener("load", function() {
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
 	video.play();
+	if (document.querySelector("#volume") == null) {
 	video.volume = 1;
-	document.querySelector("#volume").textContent = video.volume * 100 +"%"
+	document.querySelector("#volume").textContent = video.volume * 100 +"%" }
+	else {
+		document.querySelector("#volume").textContent = video.volume * 100 + "%" 
+	}
 
 });
 document.querySelector("#pause").addEventListener("click", function() {
@@ -22,7 +26,7 @@ document.querySelector("#pause").addEventListener("click", function() {
 
 document.querySelector("#slower").addEventListener("click", function() {
 	let currentRate = video.playbackRate
-	video.playbackRate = currentRate * 0.5; 
+	video.playbackRate = currentRate * 0.9;
 	console.log("Slow Down Video")
 	let newRate = video.playbackRate
 	console.log("Speed is " + newRate)
@@ -30,7 +34,7 @@ document.querySelector("#slower").addEventListener("click", function() {
 
 document.querySelector("#faster").addEventListener("click", function() {
 	let currentRate = video.playbackRate
-	video.playbackRate = currentRate * 2; 
+	video.playbackRate = currentRate * 1.1;
 	let newRate = video.playbackRate
 	console.log("Speed Up Video")
 	console.log("Speed is " + newRate);
@@ -50,10 +54,13 @@ document.querySelector("#skip").addEventListener("click", function() {
 } );
 
 document.querySelector("#mute").addEventListener("click", function() {
-	if (video.muted == false) {video.muted = true;
+	if (video.muted == false) {
+		video.muted = true;
+		document.querySelector("#mute").innerHTML = "Unmute"
 	console.log("Video Muted")
 } else {
 	video.muted = false;
+	document.querySelector("#mute").innerHTML = "Mute"
 	console.log("Video Unmuted")
 }
 
